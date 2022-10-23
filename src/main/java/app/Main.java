@@ -9,6 +9,8 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerFactory;
+import org.quartz.SimpleScheduleBuilder;
+import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 import org.apache.logging.log4j.Logger;
@@ -27,19 +29,15 @@ public class Main {
                 .withIdentity("myJob", "group1")
                 .build();
 
-        CronTrigger trigger = TriggerBuilder.newTrigger()
-                .withIdentity("trigger3", "group1")
-                .withSchedule(CronScheduleBuilder.cronSchedule("0 0/2 8-17 * * ?"))
-                .forJob("myJob", "group1")
+        //Trigger the job to run on the next round minute
+        Trigger trigger = TriggerBuilder.newTrigger()
+                .withSchedule(
+                        SimpleScheduleBuilder.simpleSchedule()
+                                .withIntervalInSeconds(10)
+                                .repeatForever())
                 .build();
 
         scheduler.scheduleJob(job, trigger);
-    }
-
-
-    class SimpleJob implements Job {
-        public void execute(JobExecutionContext arg0) throws JobExecutionException {
-            LOGGER.info("This is a quartz job!");
-        }
+        scheduler.start();
     }
 }
