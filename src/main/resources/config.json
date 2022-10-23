@@ -1,0 +1,19 @@
+{
+  "ControllerId": 0,
+  "PendingCommandsQueryInterval": 5,
+  "AccessCardsQueryInterval": 30,
+  "AccessCardsConfirmationBatchSize": 10,
+  "DatabaseCleanupInterval": 1440,
+  "EnableDatabaseDataExpirationCleanup": true,
+  "DataExpirationThreshold": 7,
+  "HardwareStatusNotificationInterval": 30,
+  "TransactionsNotificationInterval": 60,
+  "AlarmsNotificationInterval": 10,
+  "MaxDataNotificationRetries": 5,
+  "CommandsConfirmationNotificationInterval": 5,
+  "OpensApiUri": "https://127.0.0.1:5555/open-s",
+  "OpensApiUser": "user",
+  "OpensApiPassword": "password",
+  "OpensApiKey": "",
+  "OpensClientId": 0
+}
