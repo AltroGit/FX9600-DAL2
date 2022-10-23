@@ -1,10 +1,21 @@
 package app.DAL;
 
-import app.Model.*;
+import app.Model.AccessCard;
+import app.Model.AccessCardAccessLevel;
+import app.Model.AccessLevel;
+import app.Model.AccessLevelDetail;
+import app.Model.Alarm;
+import app.Model.DoorAlarm;
+import app.Model.DoorGroup;
+import app.Model.DoorGroupReader;
+import app.Model.PendingCommand;
+import app.Model.Reader;
+import app.Model.Schedule;
+import app.Model.ScheduleDetail;
+import app.Model.Transaction;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
-import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
 
