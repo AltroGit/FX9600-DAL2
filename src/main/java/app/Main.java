@@ -1,5 +1,7 @@
 package app;
 
+import app.config.Configuration;
+import app.config.ConfigurationReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.quartz.JobBuilder;
@@ -46,5 +48,16 @@ public class Main {
 
         //Empiezan a correr todos los jobs.
         scheduler.start();
+
+        //Lee archivo Json de configuraciones y se puede usar el objeto config para obtener cualqueir configuracion que se requiera.
+        ConfigurationReader configReader = new ConfigurationReader();
+        Configuration config = configReader.readConfigurationFrom("src/main/resources/config.json");
+
+        //Ejemplo de como obtener una configuracion
+        String opensApiUri = config.getOpensApiUri();
+        LOGGER.info("OpensApiUri: " + opensApiUri);
+
+        //Muestra configuraciones en log
+        LOGGER.info(config.toString());
     }
 }

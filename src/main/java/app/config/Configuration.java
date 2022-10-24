@@ -123,4 +123,27 @@ public class Configuration {
     public int getOpensClientId() {
         return opensClientId;
     }
+
+    @Override
+    public String toString() {
+        return "Configuration{" +
+                "controllerId=" + controllerId +
+                ", pendingCommandsQueryInterval=" + pendingCommandsQueryInterval +
+                ", accessCardsQueryInterval=" + accessCardsQueryInterval +
+                ", accessCardsConfirmationBatchSize=" + accessCardsConfirmationBatchSize +
+                ", databaseCleanupInterval=" + databaseCleanupInterval +
+                ", enableDatabaseDataExpirationCleanup=" + enableDatabaseDataExpirationCleanup +
+                ", dataExpirationThreshold=" + dataExpirationThreshold +
+                ", hardwareStatusNotificationInterval=" + hardwareStatusNotificationInterval +
+                ", transactionsNotificationInterval=" + transactionsNotificationInterval +
+                ", alarmsNotificationInterval=" + alarmsNotificationInterval +
+                ", maxDataNotificationRetries=" + maxDataNotificationRetries +
+                ", commandsConfirmationNotificationInterval=" + commandsConfirmationNotificationInterval +
+                ", opensApiUri='" + opensApiUri + '\'' +
+                ", opensApiUser='" + opensApiUser + '\'' +
+                ", opensApiPassword='" + opensApiPassword + '\'' +
+                ", opensApiKey='" + opensApiKey + '\'' +
+                ", opensClientId=" + opensClientId +
+                '}';
+    }
 }
