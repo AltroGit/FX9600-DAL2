@@ -16,15 +16,23 @@ public class Main {
     private final static Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws Exception {
+        //Loguea mensajes en consola.
         LOGGER.info("Welcome to FX9600 CRUD System");
+
+
+        //Se crea el scheduler quien va a hacer de orquestador. En él al final se van a registrar todos los Jobs y los triggers encargados de indicar el intervalo de ejecución.
         SchedulerFactory schedulerFactory = new StdSchedulerFactory();
         Scheduler scheduler = schedulerFactory.getScheduler();
 
+        //Se crea un objeto de tipo Job que básicamente es la tarea que vamos a correr cada cierto intervalo de tiempo.
+        //Creas tantos jobs como tareas necesiten ejecutarse.
+        //En este caso en la clase SimpleJob solo se va a loguear un mensaje.
         JobDetail job = JobBuilder.newJob(SimpleJob.class)
                 .withIdentity("myJob", "group1")
                 .build();
 
-        //Trigger the job to run on the next round minute
+        //En este caso se crea un trigger quien es responsable de medir el intercalo de tiempo de cada cuanto timepo se va a lanzar un job.
+        //Este trigger fue configurado para que cada 10 segundos ejecute un Job que se va a asociar mas abajo.
         Trigger trigger = TriggerBuilder.newTrigger()
                 .withSchedule(
                         SimpleScheduleBuilder.simpleSchedule()
@@ -32,7 +40,11 @@ public class Main {
                                 .repeatForever())
                 .build();
 
+
+        //Aca se asocian los Jobs a ejecutar a un trigger particular. Podes asociar un Job a un tirgger distinto.
         scheduler.scheduleJob(job, trigger);
+
+        //Empiezan a correr todos los jobs.
         scheduler.start();
     }
 }
