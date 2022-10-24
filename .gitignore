@@ -348,7 +348,7 @@ StyleCopReport.xml
 *.svclog
 *.scc
 
-# Chutzpah Test files
+# Chutzpah app.config.ConfigurationReaderTest files
 _Chutzpah*
 
 # Visual C++ cache files
